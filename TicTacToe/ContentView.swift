@@ -7,6 +7,17 @@
 
 import SwiftUI
 
+// Define the GameState class
+class GameState {
+    var BoardState: UInt8
+    var VictoryDistance: UInt8
+
+    init(boardState: UInt8, victoryDistance: UInt8) {
+        self.BoardState = boardState
+        self.VictoryDistance = victoryDistance
+    }
+}
+
 struct ContentView: View {
     var body: some View {
         VStack {
@@ -19,6 +30,9 @@ struct ContentView: View {
     }
 }
 
+// Example usage of the GameState class
 #Preview {
-    ContentView()
+    let exampleGameState = GameState(boardState: 0x0F, victoryDistance: 0x03) // Example values
+    print("BoardState: \(exampleGameState.BoardState), VictoryDistance: \(exampleGameState.VictoryDistance)")
+    return ContentView()
 }
