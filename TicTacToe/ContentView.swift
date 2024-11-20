@@ -18,6 +18,15 @@ class GameState {
     }
 }
 
+// Generate 3^9 elements
+let ValidMoves: [GameState] = {
+    let totalElements = Int(pow(3.0, 9.0)) // Calculate 3^9
+    return (0..<totalElements).map { index in
+        // Example initialization: use index to vary properties
+        GameState(boardState: UInt8(index % 256), victoryDistance: UInt8((index / 256) % 256))
+    }
+}()
+
 struct ContentView: View {
     var body: some View {
         VStack {
@@ -30,9 +39,9 @@ struct ContentView: View {
     }
 }
 
-// Example usage of the GameState class
+// Example usage: Print some elements of ValidMoves
 #Preview {
-    let exampleGameState = GameState(boardState: 0x0F, victoryDistance: 0x03) // Example values
-    print("BoardState: \(exampleGameState.BoardState), VictoryDistance: \(exampleGameState.VictoryDistance)")
+    print("First GameState: BoardState = \(ValidMoves[0].BoardState), VictoryDistance = \(ValidMoves[0].VictoryDistance)")
+    print("Last GameState: BoardState = \(ValidMoves[ValidMoves.count - 1].BoardState), VictoryDistance = \(ValidMoves[ValidMoves.count - 1].VictoryDistance)")
     return ContentView()
 }
